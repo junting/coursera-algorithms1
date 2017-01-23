@@ -1,7 +1,7 @@
 package assigment2;
 import edu.princeton.cs.algs4.StdOut;
 import edu.princeton.cs.algs4.StdRandom;
-
+import java.util.NoSuchElementException;
 import java.util.Iterator;
 
 public class RandomizedQueue<Item> implements Iterable<Item> {
@@ -25,10 +25,14 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         return N;
     }
     public void enqueue(Item item) {
+        if (item == null)
+            throw new NullPointerException();
         if (N == itemQueue.length) resize(2 * itemQueue.length);
         itemQueue[N++] = item;
     }
     public Item dequeue() {
+        if (isEmpty())
+            throw new NoSuchElementException();
         int randomNumber = StdRandom.uniform(N);
         Item item = itemQueue[randomNumber];
         itemQueue[randomNumber] = itemQueue[--N];
@@ -60,7 +64,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     }
 
     public static void main(String[] args) {
-        RandomizedQueue<String> testQueue = new RandomizedQueue<String>();
+        RandomizedQueue<String> testQueue = new RandomizedQueue<>();
         testQueue.enqueue("1");
         testQueue.enqueue("3");
         testQueue.enqueue("4");
