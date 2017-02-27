@@ -1,0 +1,7 @@
+*.txt
+*.png
+*.jpg
+./algorithms/8puzzle/*
+./algorithms/kdtree/*
+./algorithms/collinear/*
+./algoritms/queues/*
